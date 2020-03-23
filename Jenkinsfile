@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Build Application'){
             steps {
-                sh 'mvn clean package'
+                sh 'mvn -f pom.xml clean package'
             }
             post {
                 success {
@@ -12,13 +12,10 @@ pipeline{
                 }
             }
         }
-        /*stage('Deploy in Staging Environment'){
-            steps{
-                build job: 'Deploy_Application_Staging_Env'
-            }          
-        }*/
         stage('Create Tomcat Docker Image'){
             steps{
+                sh "pwd"
+                sh "ls -a"
                 sh 'docker build . -t tomcatsamplewebapp:${env.BUILD_ID}'
             }          
         }
