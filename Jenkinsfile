@@ -16,7 +16,7 @@ pipeline{
             steps{
                 sh "pwd"
                 sh "ls -a"
-                sh 'docker build . -t sample-project-2:${env.BUILD_ID}'
+                sh "docker build . -t sample-project-2:${env.BUILD_ID}"
             }          
         }
     }
